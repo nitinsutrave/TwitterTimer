@@ -1,2 +1,6 @@
 TimeToPost/api_credentials.py
+
 *.pyc
+*/*.pyc
+*/*/*.pyc
+*/*/*/*.pyc

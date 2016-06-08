@@ -1,0 +1,9 @@
+<form action="{% url 'result' %}" method="post">
+  {% csrf_token %}
+  <input type="text" name="user_identifier" placeholder="Enter user id or username" required="true"/><br/>
+  <select name="user_identifier_type" required="true">
+    <option value="user_id">User ID</option>
+    <option value="user_name">User Name</option>
+  </select><br/>
+  <input type="submit" value="Fetch best time to post!"></input><br/>
+</form>
