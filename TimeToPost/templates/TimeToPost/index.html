@@ -1,9 +1,19 @@
-<form action="{% url 'result' %}" method="post">
-  {% csrf_token %}
-  <input type="text" name="user_identifier" placeholder="Enter user id or username" required="true"/><br/>
-  <select name="user_identifier_type" required="true">
-    <option value="user_id">User ID</option>
-    <option value="user_name">User Name</option>
-  </select><br/>
-  <input type="submit" value="Fetch best time to post!"></input><br/>
-</form>
+<div style="margin: 200px; padding-left: 200px">
+
+  <h3>Get the Best Time To Post on Twitter</h2>
+
+  <form action="{% url 'result' %}" method="post">
+    {% csrf_token %}
+
+    <input type="text" name="user_identifier" placeholder="Enter user id or username" required="true" style="width: 300px; height: 30px;"/><br/><br/>
+
+    <select name="user_identifier_type" required="true" style="width: 300px; height: 50px;">
+      <option value="user_id">User ID</option>
+      <option value="user_name">User Name</option>
+    </select><br/><br/>
+
+    <input type="submit" value="Fetch best time to post!" style="margin-left: 50px"></input><br/><br/>
+
+  </form>
+
+</div>
