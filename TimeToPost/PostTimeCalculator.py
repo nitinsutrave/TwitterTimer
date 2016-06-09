@@ -69,15 +69,18 @@ def populate_tweet_counter_hash(followers_ids, api):
     one_week_back = time_delimiter()
 
     # Using only top 10 followers to keep up with time constraints
-    top_followers_ids = followers_ids[0:10]
+    # top_followers_ids = followers_ids[0:10]
 
     #
     # Fetch the timeline of 100 posts for every follower and increment post count according to time/day
     #
-    for followers_id in top_followers_ids:
+    for followers_id in followers_ids:
         print "Doing follower: " + str(followers_id)
         try:
             timeline = api.user_timeline(id=followers_id, count=100)
+        except tweepy.RateLimitError:
+            print "*** RATE LIMIT EXCEEDED"
+            break
         except tweepy.TweepError:
             print("Couldn't run for user " + str(followers_id))
             continue
