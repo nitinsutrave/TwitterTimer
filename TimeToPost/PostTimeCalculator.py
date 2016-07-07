@@ -2,7 +2,6 @@ from twitter_api import TwitterAPI
 import datetime
 import tweepy
 
-
 #
 # Convert the integer reprsentation of day to a readable string
 #
@@ -69,7 +68,7 @@ def populate_tweet_counter_hash(followers_ids, api):
     one_week_back = time_delimiter()
 
     # Using only top 10 followers to keep up with time constraints
-    # top_followers_ids = followers_ids[0:10]
+    followers_ids = followers_ids[0:10]
 
     #
     # Fetch the timeline of 100 posts for every follower and increment post count according to time/day
@@ -142,14 +141,8 @@ def calculate_best_day_to_post(tweet_counter_hash):
 #
 # Starting point for the calculation of best time and best day for a user to post
 #
-def calculate(user_identifier, user_identifier_type):
-    api = TwitterAPI().api
-
-    tweet_counter_hash = {}
-    if user_identifier_type == 'user_id':
-        tweet_counter_hash = calculate_from_user_id(user_identifier, api)
-    else:
-        tweet_counter_hash = calculate_from_screen_name(user_identifier, api)
+def calculate(user_id, api):
+    tweet_counter_hash = calculate_from_user_id(user_id, api)
 
     print "The calculated hash is:"
     print tweet_counter_hash
